@@ -114,8 +114,16 @@ select:focus {
   justify-content: center;
 }
 
-.button-div #general-error + #btn{
+#btn{
   justify-self: center;
+}
+
+#general-error {
+  justify-self: center;
+}
+
+.error.success {
+  color: green;
 }
 
 button {
