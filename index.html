@@ -6,28 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TOP: Form Validation</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <form action="" method="get" id="form">
-      <label for="email"></label>
-      <input type="email" id="name" name="email" placeholder="Enter mail">
-      <label for="country"></label>
-      <select id="country" name="country" form="form">
-        <option value="" selected hidden>Select Country</option>
-        <option value="USA">United States of America</option>
-        <option value="MX">Mexico</option>
-        <option value="CA">Canada</option>
-        <option value="PR">Puerto Rico</option>
-        <option value="PL">Poland</option>
-      </select>
-      <label for="zip"></label>
-      <input type="text" id="zip" name="zip" placeholder="Enter zip code">
-      <label for="password"></label>
-      <input type="password" id="password" name="password" placeholder="Create a password">
-      <label for="confirm-password"></label>
-      <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password">
-      <button>Submit</button>
+    <p>Let's create your account</p>
+    <form action="" method="get" id="form" novalidate>
+      <div class="email-div">
+        <label for="email"></label>
+        <input type="email" id="email" name="email" placeholder="Enter email">
+        <div class="error" id="email-error"></div>
+      </div>
+      <div class="country-div">
+        <label for="country"></label>
+        <select id="country" name="country" form="form">
+          <option value="" selected hidden>Select Country</option>
+          <option value="USA">United States of America</option>
+          <option value="MX">Mexico</option>
+          <option value="CA">Canada</option>
+          <option value="PR">Puerto Rico</option>
+          <option value="PL">Poland</option>
+        </select>
+        <div class="error" id="country-error"></div>
+      </div>
+      <div class="zip-div">
+        <label for="zip"></label>
+        <input type="text" id="zip" name="zip" placeholder="Enter zip code">
+        <div class="error" id="zip-error"></div>
+      </div>
+      <div class="password-div">
+        <label for="password"></label>
+        <input type="password" id="password" name="password" placeholder="Create a password" maxlength="12">
+        <div class="error" id="password-error"></div>
+      </div>
+      <div class="confirm-password-div">
+        <label for="confirm-password"></label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password">
+        <div class="error" id="confirmation-error"></div>
+      </div>
+      <div class="button-div">
+        <button>Get started</button>
+      </div>
     </form>
   </div>
   
