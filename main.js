@@ -32,4 +32,56 @@ passConfirm.addEventListener('input', (e) => {
     confirmError.textContent = '';
     passConfirm.classList.remove('error');
   }
-})
+});
+
+function checkZip() {
+  const constraints = {
+    usa: [
+      '^[0-9]{5}$',
+      'U.S. ZIPs must have exactly 5 digits: e.g. 10001'
+    ],
+
+    pr: [
+      '^[0-9]{5}$',
+      'Puerto Rico ZIPs must have exactly 5 digits: e.g. 00600'
+    ],
+
+    ca: [
+      '^[a-zA-Z]\\d[a-zA-Z]\\s[\\d][a-zA-Z][\\d]$',
+      'Canada ZIPs must have 6 characters & a space: e.g. A0A 0A0'
+    ],
+
+    mx: [
+      '^[0-9]{5}$',
+      'Mexico ZIPs must have exactly 5 digits: e.g. 00810'
+    ],
+
+    pl: [
+      '^[0-9]{2}[-][0-9]{3}$',
+      'Poland ZIPs must have exactly 5 digits with a hyphen: e.g. 30-021'
+    ],
+  };
+
+  const country = document.getElementById('country').value;
+
+  const zipField = document.getElementById('zip');
+
+  const zipError = document.getElementById('zip-error');
+
+  const constraint = new RegExp(constraints[country][0], '');
+
+  if (!constraint.test(zipField.value) && zipField.value.length > 0) {
+    zipError.textContent = `${constraints[country][1]}`
+    zipField.classList.add('error');
+    return false;
+  } else {
+    zipError.textContent = '';
+    zipField.classList.remove('error');
+    return true;
+  }
+};
+
+window.onload = () => {
+  document.getElementById('country').onchange = checkZip;
+  document.getElementById('zip').onchange = checkZip;
+}
