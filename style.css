@@ -109,8 +109,13 @@ select:focus {
 }
 
 .button-div {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-div #general-error + #btn{
   justify-self: center;
-  padding-bottom: 10px;
 }
 
 button {
@@ -156,7 +161,7 @@ button:active {
 }
 
 .error {
-  font-size: .7rem;
+  font-size: .68rem;
   height: 19px;
   padding-left: 2px;
   color: #ff4141;
