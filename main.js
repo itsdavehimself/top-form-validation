@@ -5,6 +5,9 @@ const passwordError = document.getElementById('password-error');
 const passwordRegEx = new RegExp ('(?=.*)(?=.*[!@#$%?=*&]).{6,}');
 const passConfirm = document.getElementById('confirm-password');
 const confirmError = document.getElementById('confirmation-error');
+const submitBtn = document.getElementById('btn');
+const form = document.getElementById('form');
+const generalError = document.getElementById('general-error');
 
 email.addEventListener('input', (e) => {
   if (email.validity.typeMismatch) {
@@ -85,3 +88,21 @@ window.onload = () => {
   document.getElementById('country').onchange = checkZip;
   document.getElementById('zip').onchange = checkZip;
 }
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const isValid = email.validity.valid && 
+  passwordRegEx.test(password.value) &&
+  password.value === passConfirm.value &&
+  checkZip() === true;
+
+  if (!isValid) {
+    generalError.textContent = 'Please correct fields with errors.';
+    generalError.classList.remove('success');
+  } else {
+    generalError.textContent = 'High five!'
+    generalError.classList.add('success');
+  }
+
+});
